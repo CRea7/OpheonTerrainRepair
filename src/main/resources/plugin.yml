@@ -9,3 +9,4 @@ depend: [WorldEdit]
 commands:
   repair:
     description: schmetic paste
+    usage: /repair <World> <X> <Y> <Z> <Schematic Name>

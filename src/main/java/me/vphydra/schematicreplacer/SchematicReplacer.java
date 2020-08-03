@@ -27,31 +27,34 @@ import java.io.IOException;
 public final class SchematicReplacer extends JavaPlugin {
 
 
-    File file = new File(getServer().getPluginManager().getPlugin("WorldEdit").getDataFolder(), "/schematics/test.schem");
+    //File file = new File(getServer().getPluginManager().getPlugin("WorldEdit").getDataFolder(), "/schematics/test.schem");
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if(command.getName().equals("repair")) {
 
-            World world = Bukkit.getWorld("world");
+            File file = new File(getServer().getPluginManager().getPlugin("WorldEdit").getDataFolder(), "/schematics/" + args[4] + ".schem");
+
+            World world = Bukkit.getWorld(args[0]);
 
             com.sk89q.worldedit.world.World weworld = BukkitAdapter.adapt(world);
 
-            getLogger().info("got into the command");
+            double x = Double.parseDouble(args[1]);
+            double y = Double.parseDouble(args[2]);
+            double z = Double.parseDouble(args[3]);
+
             ClipboardFormat format = ClipboardFormats.findByFile(file);
 
             try (ClipboardReader reader = format.getReader(new FileInputStream(file))) {
-
                 Clipboard clipboard = reader.read();
-                getLogger().info("Reading the file");
+
 
 
                 try (EditSession editSession = WorldEdit.getInstance().getEditSessionFactory().getEditSession(weworld, -1)) {
 
-                    getLogger().info("about to place in world");
                     Operation operation = new ClipboardHolder(clipboard).createPaste(editSession)
-                            .to(BlockVector3.at(100, 100, 100)).ignoreAirBlocks(true).build();
+                            .to(BlockVector3.at(x, y, z)).ignoreAirBlocks(true).build();
 
                     try {
                         Operations.complete(operation);
