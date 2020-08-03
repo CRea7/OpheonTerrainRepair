@@ -34,8 +34,7 @@ public final class SchematicReplacer extends JavaPlugin {
 
         if(command.getName().equals("repair")) {
 
-            Player player = (Player)sender;
-            World world = player.getWorld();
+            World world = Bukkit.getWorld("world");
 
             com.sk89q.worldedit.world.World weworld = BukkitAdapter.adapt(world);
 
