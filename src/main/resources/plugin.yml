@@ -1,0 +1,11 @@
+name: SchematicReplacer
+version: ${project.version}
+main: me.vphydra.schematicreplacer.SchematicReplacer
+api-version: 1.15
+authors: [Conor]
+description: replaces bending arena
+website: https://github.com/CRea7
+depend: [WorldEdit]
+commands:
+  repair:
+    description: schmetic paste
