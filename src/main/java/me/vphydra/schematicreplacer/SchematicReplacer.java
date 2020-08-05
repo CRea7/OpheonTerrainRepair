@@ -27,7 +27,10 @@ import java.io.IOException;
 public final class SchematicReplacer extends JavaPlugin {
 
 
-    //File file = new File(getServer().getPluginManager().getPlugin("WorldEdit").getDataFolder(), "/schematics/test.schem");
+    /*
+    Author: Conor
+    Date: 05/08/2020
+     */
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -36,10 +39,11 @@ public final class SchematicReplacer extends JavaPlugin {
 
             File file = new File(getServer().getPluginManager().getPlugin("WorldEdit").getDataFolder(), "/schematics/" + args[4] + ".schem");
 
+            //gets world based on name and converts it to a sk89q WorldEdit world.
             World world = Bukkit.getWorld(args[0]);
-
             com.sk89q.worldedit.world.World weworld = BukkitAdapter.adapt(world);
 
+            //coordinates taking from player arguments
             double x = Double.parseDouble(args[1]);
             double y = Double.parseDouble(args[2]);
             double z = Double.parseDouble(args[3]);
@@ -54,7 +58,7 @@ public final class SchematicReplacer extends JavaPlugin {
                 try (EditSession editSession = WorldEdit.getInstance().getEditSessionFactory().getEditSession(weworld, -1)) {
 
                     Operation operation = new ClipboardHolder(clipboard).createPaste(editSession)
-                            .to(BlockVector3.at(x, y, z)).ignoreAirBlocks(true).build();
+                            .to(BlockVector3.at(x, y, z)).ignoreAirBlocks(false).build(); //changed ignore to false may cause lag.
 
                     try {
                         Operations.complete(operation);
