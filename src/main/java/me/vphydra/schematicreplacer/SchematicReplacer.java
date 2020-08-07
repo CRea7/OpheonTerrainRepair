@@ -35,7 +35,7 @@ public final class SchematicReplacer extends JavaPlugin {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if(command.getName().equals("repair")) {
+        if(command.getName().equals("replacer")) {
 
             File file = new File(getServer().getPluginManager().getPlugin("WorldEdit").getDataFolder(), "/schematics/" + args[4] + ".schem");
 
@@ -58,7 +58,7 @@ public final class SchematicReplacer extends JavaPlugin {
                 try (EditSession editSession = WorldEdit.getInstance().getEditSessionFactory().getEditSession(weworld, -1)) {
 
                     Operation operation = new ClipboardHolder(clipboard).createPaste(editSession)
-                            .to(BlockVector3.at(x, y, z)).ignoreAirBlocks(false).build(); //changed ignore to false may cause lag.
+                            .to(BlockVector3.at(x, y, z)).ignoreAirBlocks(true).build();
 
                     try {
                         Operations.complete(operation);
@@ -85,14 +85,4 @@ public final class SchematicReplacer extends JavaPlugin {
         return super.onCommand(sender, command, label, args);
     }
 
-    @Override
-    public void onEnable() {
-        // Plugin startup logic
-
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
-    }
 }
