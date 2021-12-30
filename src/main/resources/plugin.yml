@@ -7,7 +7,7 @@ description: replaces bending arena
 website: https://github.com/CRea7
 depend: [WorldEdit]
 commands:
-  repair:
+  replacer:
     description: schmetic paste
-    permission: repair
-    usage: /repair <World> <X> <Y> <Z> <Schematic Name>
+    permission: replacer
+    usage: /replacer <World> <X> <Y> <Z> <Schematic Name>

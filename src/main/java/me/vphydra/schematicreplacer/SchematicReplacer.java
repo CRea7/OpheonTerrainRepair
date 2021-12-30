@@ -35,7 +35,7 @@ public final class SchematicReplacer extends JavaPlugin {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if(command.getName().equals("repair")) {
+        if(command.getName().equals("replacer")) {
 
             File file = new File(getServer().getPluginManager().getPlugin("WorldEdit").getDataFolder(), "/schematics/" + args[4] + ".schem");
 

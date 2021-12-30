@@ -1,0 +1,7 @@
+<mirror>
+  <id>my-repository-http-unblocker1</id>
+  <mirrorOf>mulesoft-release</mirrorOf>
+  <name></name>
+  <url>http://maven.sk89q.com/repo/</url>;
+  <blocked>false</blocked>
+</mirror>
