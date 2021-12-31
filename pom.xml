@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.vphydra</groupId>
-    <artifactId>SchematicReplacer</artifactId>
+    <artifactId>SchematicReplacerAsync</artifactId>
     <version>1.2-1.18</version>
     <packaging>jar</packaging>
 
@@ -60,6 +60,10 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
+            <id>github-asyncworldedit-api</id>
+            <url>https://raw.githubusercontent.com/SBPrime/AsyncWorldEdit/maven-artifact/</url>
+        </repository>
+        <repository>
             <id>papermc</id>
             <url>https://papermc.io/repo/repository/maven-public/</url>
         </repository>
@@ -77,19 +81,30 @@
     </repositories>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.primesoft.asyncworldedit</groupId>
+            <artifactId>AsyncWorldEdit-API</artifactId>
+            <version>[2.2.0-rc-01, 2.2.0)</version>
+            <type>jar</type>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/asyncworldedit/AsyncWorldEdit-3.9.3.jar</systemPath>
+        </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.18-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>com.sk89q.worldedit</groupId>
-            <artifactId>worldedit-bukkit</artifactId>
-            <version>7.2.8-SNAPSHOT</version>
-            <scope>provided</scope>
+            <artifactId>worldedit</artifactId>
+            <version>7.2.0</version>
+            <type>jar</type>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/worldedit/worldedit-bukkit-7.2.8.jar</systemPath>
         </dependency>
+
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
